@@ -10,16 +10,16 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
     if @document.save
-      redirect_to resumes_path, notice: "The document #{@document.name} has been uploaded."
+      redirect_to documents_path, notice: "The document #{@document.name} has been uploaded."
     else
       render "new"
     end
   end
 
   def destroy
-    @document = Resume.find(params[:id])
+    @document = Document.find(params[:id])
     @document.destroy
-    redirect_to resumes_path, notice:  "The document #{@document.name} has been deleted."
+    redirect_to documents_path, notice:  "The document #{@document.name} has been deleted."
   end
 
 private
